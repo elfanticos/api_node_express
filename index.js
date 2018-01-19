@@ -1,5 +1,5 @@
-const pgp = require("pg-promise")();
-const db  = pgp("postgres://postgres:jhonatan@localhost:5432/registro_personas");
+const pgpromise = require("pg-promise")();
+const db  = pgpromise("postgres://postgres:postgres@localhost:5433/registro_personas");
 var   app = require('./app');
 var   fs  = require('fs'); 
 var port = process.env.PORT || 3978;
@@ -10,3 +10,4 @@ app.listen(port, function() {
 });
 
 exports.conection = db;
+exports.pgpromise = pgpromise;
