@@ -8,5 +8,5 @@ api.post('/getListadoPersonas',controller.getListadoPersonas);
 api.post('/getPersona',        controller.findPersona);
 api.post('/editPersona',       controller.editPersona);
 api.post('/deletePersona',     controller.deletePersona);
-
+api.post('/insertPersona',     controller.insertPersona);
 module.exports = api;

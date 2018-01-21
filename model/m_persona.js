@@ -74,8 +74,31 @@ function deletePesona(id,response) {
 			response(result);
 		});
 }
+
+function insertPersona(data,response) {
+	var sql = `INSERT 
+	            INTO personas (nombre_pers, ape_pater, ape_mater, nro_doc, fecha_nac)
+              VALUES ($1, $2, $3,$4,$5)`;
+	sql = db.pgpromise.as.format(sql,[data.nombre_pers,data.ape_pater, data.ape_mater,data.nro_doc,data.fecha_nac]);
+	db.conection.query(sql)
+		.then(function(data) {
+			var result = {
+				code : 200,
+				data : 'Se inserto correctamente'
+			};
+			response(result);
+		}).catch(function(error) {
+			var result = {
+				code : 400,
+				data : 'Error al insertar'
+			};
+			response(result);
+		});
+}
+
 module.exports = {
 	selectPersonas,
 	editPersona,
-	deletePesona
+	deletePesona,
+	insertPersona
 }

@@ -37,9 +37,21 @@ function deletePersona(req, res) {
 	}
 }
 
+function insertPersona(req,res) {
+	var params = req.body;
+	if(params != null) {
+		m_persona.insertPersona(params,function(data) {
+			res.status(200).send({data});
+		});
+	}else {
+		res.status(200).send({data:'No se pudo registrar a la persona.', code:200});
+	}
+}
+
 module.exports = {
 	getListadoPersonas,
 	findPersona,
 	editPersona,
-	deletePersona
+	deletePersona,
+	insertPersona
 }
